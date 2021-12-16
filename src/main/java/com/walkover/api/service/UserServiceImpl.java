@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
             this.repo.save(user);
         }
         Map<String,String> map = new HashMap<>();
-        map.put("message", "User registered successfully, please login");
+        map.put("success", "User registered successfully, please login");
         return map;
     }
 
@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
         else {
             if (BCrypt.checkpw(password, optional.get().getPassword()) != false) {
                 Map<String,String> map = new HashMap<>();
-                map.put("Success","Logged In successfully");
+                map.put("success","Logged In successfully");
                 return map;
             } else {
                 throw new UserAuthException("Invalid email or password");
@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
                 String hashPassword = BCrypt.hashpw(newPassword,BCrypt.gensalt(10));
                 this.repo.save(new User(optional.get().getUserId(), email,hashPassword));
                 Map<String,String> map = new HashMap<>();
-                map.put("Success" , "Password updated successfully");
+                map.put("success" , "Password updated successfully");
                 return map;
             }
         }
@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService {
             if (BCrypt.checkpw(password, optional.get().getPassword()) != false) {
                 this.repo.deleteById(email);
                 Map<String,String> map = new HashMap<>();
-                map.put("Success" , "User deleted successfully");
+                map.put("success" , "User deleted successfully");
                 return map;
             } else {
                 throw new UserAuthException("Invalid email or password");
