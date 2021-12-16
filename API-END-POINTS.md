@@ -1,5 +1,5 @@
 Description:  
-    On Registering of a user a unique user-id is generated and all its datas are saved in the database , password is saved in encrypted form. On every api hit there are multiple checks to verify the authencity of the user.
+    On Registering of a user a unique user-id is generated and all its datas are saved in the database , password is saved in encrypted form using Bcrypt library. On every api hit there are multiple checks to verify the authencity of the user.
     
 Technology Used:
     Java 11, Hibernate, Postgres DB
